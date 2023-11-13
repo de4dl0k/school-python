@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Student Registration Form 2</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.css">
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <style>
+    body {
+      font-family: arial;
+      transition: all 0.5s ease;
+      -webkit-transition: all 0.5s ease;
+    }
+
+    .container {
+      padding: 40px;
+      width: 500px;
+      margin: 20px auto;
+      background-color: #f1f1f1;
+    }
+
+    .container h2 {
+      text-align: center;
+    }
+
+    fieldset {
+      border: 1px solid #d4d4d4;
+      padding: 20px 10px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+    }
+
+    .input-field {
+      display: flex;
+      margin-bottom: 15px;
+    }
+
+    label {
+      margin-right: 25px;
+      margin-top: 5px;
+      width: 30%;
+      text-align: right;
+      font-weight: bold;
+    }
+
+    .icon {
+      background: #fcfcfa;
+      color: black;
+      min-width: 40px;
+      border: 2px solid #e2e2e2;
+      border-right: none;
+      text-align: center;
+      padding: 7px;
+    }
+
+    .inputs {
+      padding: 3px 10px;
+      border: 2px solid #e2e2e2;
+      width: 70%;
+    }
+
+    input [type="radio"] {
+      margin-right: 8px;
+    }
+
+    .textarea {
+      padding: 8px;
+      border: 2px solid #e2e2e2;
+    }
+
+    .textarea-icon {
+      padding-top: 14px;
+    }
+
+    .button {
+      text-align: center;
+    }
+
+    .submit {
+      color: white;
+      background: #ee9a25;
+      padding: 9px 25px;
+      margin-right: 10px;
+      border: none;
+      border-radius: 5px;
+      box-shadow: 0 0 5px #c9c9c9;
+    }
+
+    .submit:hover {
+      background: #d1871e;
+    }
+
+    .logout {
+      color: white;
+      background: #c93232;
+      padding: 9px 25px;
+      border: none;
+      border-radius: 5px;
+      box-shadow: 0 0 5px #c9c9c9;
+    }
+
+    .logout:hover {
+      background: #a32727;
+    }
+
+    .city {
+      margin-left: -6px;
+    }
+
+    .gender {
+      margin-left: -30px;
+    }
+
+    .courses {
+      margin-left: -26px;
+    }
+
+    input[type="radio"] {
+      margin-right: 10px;
+    }
+
+    .message {
+      margin-left: -30px;
+    }
+  </style>
+</head>
+
+<body style="background-image: linear-gradient(45deg,#328f8a,#08ac4b);">
+  <div class="container">
+    <h2>Registration From</h2>
+    <form action="{% url 'submit_form' %}" method="post" id="registration-form">
+      {% csrf_token %}
+      <fieldset>
+        <div class="input-field">
+          <label>Name</label>
+          <i class="fa fa-user icon"></i>
+          <input type="text" class="inputs" name="username" required>
+        </div>
+        <div class="input-field">
+          <label>Date of birth</label>
+          <i class="fa-solid fa-cake-candles icon"></i>
+          <input type="date" class="inputs" name="date of birth" required>
+        </div>
+        <div class="input-field">
+          <label>Age</label>
+          <i class="fa-solid fa-people-roof icon"></i>
+          <input type="number" class="inputs" name="age" required>
+        </div>
+        <div class="input-field">
+          <label>Email</label>
+          <i class="fa fa-envelope icon"></i>
+          <input type="email" class="inputs" required>
+        </div>
+        <div class="input-field">
+          <label class="gender">Gender</label>
+          <input type="radio" name="gender" value="male" required>Male
+          <input type="radio" name="gender" value="female" required> Female
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <div class="input-field">
+          <label class="message">Address</label>
+          <i class="fa-solid fa-address-book icon textarea-icon"></i>
+          <textarea class="textarea"></textarea>
+        </div>
+        <div class="input-field">
+          <label class="city">Department</label>
+          <i class="fa fa-list icon"></i>
+          <select name="department" id="department" class="inputs">
+            <option value="0">Select Department</option>
+            <option value="1">Commerce</option>
+            <option value="2">Computer Science</option>
+            <option value="3">Biology Science</option>
+            <option value="4">Humanities</option>
+            <option value="5">Mechanical</option>
+          </select>
+        </div>
+        <div class="input-field">
+          <label class="city">Course</label>
+          <i class="fa fa-list icon"></i>
+          <select name="course" id="course" class="inputs">
+          </select>
+        </div>
+        <div class="input-field">
+          <label class="city">Purpose</label>
+          <i class="fa fa-list icon"></i>
+          <select name="city" id="" class="inputs">
+            <option value="0">Select</option>
+            <option value="1">Enquiry</option>
+            <option value="2">Place order</option>
+            <option value="3">Return</option>
+          </select>
+        </div>
+        <div class="input-field">
+          <label>Phone No</label>
+          <i class="fa fa-phone icon"></i>
+          <input type="number" class="inputs">
+        </div>
+        <div class="input-field">
+          <label class="courses">Material Provide</label>
+          <input class="" type="checkbox" value="note-book">Note book
+          <input class="" type="checkbox" value="pen">Pen
+          <input class="" type="checkbox" value="exam-papers">Exam papers
+        </div>
+      </fieldset>
+
+      <div class="button">
+        <button type="submit" class="submit" id="submit-btn">Submit</button>
+
+      </div>
+    </form>
+    <br>
+    <form action="/">
+      <button style="margin-left:200px;" type="logout" class="logout">Logout</button>
+    </form>
+  </div>
+<script>
+  $(document).ready(function(){
+    // Define the department and course options
+    var departmentOptions = {
+      0: [],  // Default option
+      1: ["BBA in Marketing", "BBA in HR Management", "Bachelors in Digital Media", "BBA in Supply Chain Management", "BA LLB"],
+      2: ["Front Office Management", "Database Management", "Networking", "Operating Systems", "Computer Languages"],
+      3: ["BSc in Biology", "BSc in Microbiology", "BSc in Zoology", "BSc in Dental Surgery", "BSc in Medical Technology"],
+      4: ["Economics", "Psychology", "History", "Political Science", "Geography"],
+      5: ["Dynamics and vibration", "Engineering design", "Heat and mass transfer", "Fluid mechanics", "Solid mechanics"],
+    };
+    function updateCourseOptions() {
+      var departmentId = $('#department').val();
+      var courses = departmentOptions[departmentId] || [];
+
+      var options = '<option value="0">Select Department first</option>';
+      for (var i = 0; i < courses.length; i++) {
+        options += '<option value="' + courses[i] + '">' + courses[i] + '</option>';
+      }
+
+      $('#course').html(options);
+    }
+    $('#department').change(function(){
+      updateCourseOptions();
+    });
+
+    // Initial update on page load
+    updateCourseOptions();
+  });
+</script>
+</body>
+
+</html>
